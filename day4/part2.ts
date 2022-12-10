@@ -31,8 +31,7 @@ function start() {
       return elves
     })
 
-  const answer = elves.reduce((acc, section) => {
-    const [elf1, elf2] = section
+  const answer = elves.reduce((acc, [elf1, elf2]) => {
     let isFullyContained = false
     let isOverlap = false
 
