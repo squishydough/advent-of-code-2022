@@ -20,33 +20,33 @@ function getLetterPriority(letter: string): number {
   return characterCode + uppercaseOffset
 }
 
-const rucksack = fs.readFileSync('input.txt', 'utf8').split('\r\n')
+function start() {
+  const rucksacks = fs.readFileSync('input.txt', 'utf8').split('\r\n')
 
-const priorities = rucksack.reduce<number>((acc, item) => {
-  // Split the item in half into two compartments
-  const compartment1 = item.slice(0, item.length / 2)
-  const compartment2 = item.slice(item.length / 2, item.length)
+  const priorities = rucksacks.reduce<number>((acc, item) => {
+    // Split the item in half into two compartments
+    const half = item.length / 2
+    const compartment1 = item.slice(0, half)
+    const compartment2 = item.slice(half, half * 2)
 
-  // Compare each letter in compartment1 to each letter in compartment2
-  // Once a duplicate is found, break out of the loop
-  let duplicateItem: string | null = null
-  for (let i = 0; i < compartment1.length; i++) {
-    const letter = compartment1[i]
-    if (compartment2.includes(letter)) {
-      duplicateItem = letter
-      break
+    // Compare each letter in compartment1 to each letter in compartment2
+    // Once a duplicate is found, break out of the loop
+    let duplicateItem = ''
+    for (let i = 0; i < compartment1.length; i++) {
+      const letter = compartment1[i]
+      if (compartment2.includes(letter)) {
+        duplicateItem = letter
+        break
+      }
     }
-  }
 
-  if (!duplicateItem) {
-    console.error('No duplicate item found')
-    return 0
-  }
+    // Add the priority of the duplicate item to the accumulator
+    return acc + getLetterPriority(duplicateItem)
+  }, 0)
 
-  // Add the priority of the duplicate item to the accumulator
-  return acc + getLetterPriority(duplicateItem)
-}, 0)
+  console.info(
+    `The sum of priorities for the rucksack item types is ${priorities}`
+  )
+}
 
-console.info(
-  `The sum of priorities for the rucksack item types is ${priorities}`
-)
+start()
