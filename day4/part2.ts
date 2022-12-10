@@ -8,7 +8,7 @@ type Elf = {
 }
 
 function start() {
-  const elves = fs
+  const sections = fs
     // Read all lines from the input.txt file
     .readFileSync('input.txt', 'utf-8')
     // Split each line into an array
@@ -31,7 +31,7 @@ function start() {
       return elves
     })
 
-  const answer = elves.reduce((acc, [elf1, elf2]) => {
+  const answer = sections.reduce((acc, [elf1, elf2]) => {
     let isFullyContained = false
     let isOverlap = false
 
