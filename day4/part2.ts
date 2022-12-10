@@ -13,8 +13,8 @@ function start() {
     .readFileSync('input.txt', 'utf-8')
     // Split each line into an array
     .split(/\r?\n/)
-    // Convert each array item into an array of elves and
-    // the ranges they are responsible for
+    // Convert each array item into an array of elves,
+    // detailing the ranges they are responsible for
     .map<Elf[]>((section) => {
       const elfRanges = section.split(',')
 
