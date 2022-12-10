@@ -8,6 +8,7 @@ type Elf = {
 }
 
 function start() {
+  // Each section is an array containing two elves (Elf)
   const sections = fs
     // Read all lines from the input.txt file
     .readFileSync('input.txt', 'utf-8')
