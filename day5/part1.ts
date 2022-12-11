@@ -62,11 +62,6 @@ function start() {
       let fromStack = crates[from - 1]
       let toStack = crates[to - 1]
 
-      if (fromStack === '') {
-        console.error(`No crates to move from ${from} to ${to}`)
-        continue
-      }
-
       // Store the top crate (i.e. last letter)
       const crate = fromStack[fromStack.length - 1]
 
