@@ -2,7 +2,8 @@ import fs from 'fs'
 
 /**
  * Crate input stored as an array
- * 0 = bottom of stack
+ * 1st character = bottom of stack
+ * Last character = top of stack
  *
  * Input:
  * [Q]         [N]             [N]
