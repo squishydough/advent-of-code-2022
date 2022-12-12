@@ -4,14 +4,16 @@ function start(datastream: string) {
   let packetStart = -1
   let characters = ''
 
+  const MESSAGE_SIZE = 4
+
   for (let i = 0; i < datastream.length; i++) {
-    // grab 4-letter chunk, splitting letters into an array
-    const candidate = datastream.slice(i, i + 4).split('')
+    // grab 14-letter chunk, splitting letters into an array
+    const candidate = datastream.slice(i, i + MESSAGE_SIZE).split('')
 
     let validCandidate = true
     for (let j = 0; j < candidate.length; j++) {
       const letter = candidate[j]
-      // check if letter found anywhere else in the 4-letters
+      // check if letter found anywhere else in the letters
       // if candidate index and j are the same, then it's the
       // exact same character slot and should not count as a duplicate
       const isDuplicate =
@@ -24,7 +26,7 @@ function start(datastream: string) {
     }
 
     if (validCandidate) {
-      packetStart = i + 4
+      packetStart = i + MESSAGE_SIZE
       characters = candidate.join('')
       break
     }
