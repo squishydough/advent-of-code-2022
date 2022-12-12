@@ -13,7 +13,7 @@ function start(datastream: string) {
     let validCandidate = true
     for (let j = 0; j < candidate.length; j++) {
       const letter = candidate[j]
-      // check if letter found anywhere else in the 4-letters
+      // check if letter found anywhere else in the 14-letters
       // if candidate index and j are the same, then it's the
       // exact same character slot and should not count as a duplicate
       const isDuplicate =
